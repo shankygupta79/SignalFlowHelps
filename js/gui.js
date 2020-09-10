@@ -84,7 +84,7 @@ function solve() {
     });
     //add edges
     cy.edges().forEach(function (edge) {
-        gain = Number(edge.data('name'));
+        gain = edge.data('name');
         source = getNodeSolvingId(edge.data('source'));
         target = getNodeSolvingId(edge.data('target'));
         g.setEdge(source, target, {

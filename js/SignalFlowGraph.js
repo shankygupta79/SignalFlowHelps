@@ -155,13 +155,14 @@ function getDelta(graph,cycles,nontouchingLoops) {
     if(cycles.length == 0){
         return delta;
     }else {
-        var sum = 0;
+        var sum ="0";
         for(var i = 0; i < cycles.length; i++){
-            sum = sum + getCycleGain(graph,cycles[i]);
+            sum = sum +" + "+ getCycleGain(graph,cycles[i]);
         }
-        delta = delta - sum;
+        delta = delta +"- {"+ sum+"}";
         var flag = 1;
         var sumOfmultipliedLoops = getSumOfMultipliedLoops(graph,nontouchingLoops);
+        console.log(sumOfmultipliedLoops)
         for (var i = 0; i < sumOfmultipliedLoops.length; i++){
             delta = delta + flag * sumOfmultipliedLoops[i];
             flag = flag * -1;
@@ -194,9 +195,9 @@ function getMasonsResult(graph,forwordPaths,cycles,nonTOuchingLoops) {
         var pathGain = getForwardGain(graph,forwordPaths[i]);
         var validPathCycles = getValidCyclesWithPath(forwordPaths[i],cycles);
         var pathDelta = getDelta(graph,validPathCycles,getNonTouchingLoops(validPathCycles));
-        forwordPathsDeltaGain = forwordPathsDeltaGain + pathGain*pathDelta;
+        forwordPathsDeltaGain = forwordPathsDeltaGain +"+"+ pathGain+"*"+pathDelta;
     }
-    return forwordPathsDeltaGain /(delta * 1.0);
+    return forwordPathsDeltaGain +"/"+(delta);
 }
 
 
@@ -258,10 +259,10 @@ function isTwoNonTouching(cycle1,cycle2) {
 
 
 function getForwardGain(graph,path) {
-    var gain = 1;
+    var gain = "1";
     for (var i = 0; i < path.length-1;i++){
         var edgeGain = getEdgeGian(graph,path[i],path[i+1]);
-        gain = gain * edgeGain;
+        gain = gain +" * "+ edgeGain;
     }
     return gain
 }
@@ -269,7 +270,7 @@ function getForwardGain(graph,path) {
 
 function getCycleGain(graph,path) {
     var tempGain = getForwardGain(graph,path);
-    return tempGain * getEdgeGian(graph,path[path.length-1],path[0]);
+    return tempGain +"*"+ getEdgeGian(graph,path[path.length-1],path[0]);
 }
 
 function getEdgeGian(graph, node1, node2){
