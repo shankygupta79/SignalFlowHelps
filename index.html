@@ -21,38 +21,35 @@
             <div class="tab-pane active container" id="dragdrop"><br>
 
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <input type="file" class="btn button btn-outline-primary" onchange='readText(this)' />
-                        <button type="button" class="btn button btn-outline-primary" onclick="saveAsJSON('graph.json')">Save as JSON</button>
-
-                    </div>
-                    <div class="btn-group mr-2" role="group" aria-label="Second group">
-                        <button type="button" class="btn button button btn-outline-primary" onclick="resizeGraph()">Fit</button>
-                        <button type="button" class="btn button button btn-outline-primary" onclick="snapShot()"><img src="assets/SnapshotIcon.png" width="20" /></button>
-                    </div>
-
-
-                </div>
-
-
-                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group mr-2" role="group" aria-label="Third group">
-                        <button type="button" class="btn button btn-outline-primary" onclick="addNode()">Add Node</button>
-                        <button type="button" class="btn button btn-outline-primary" id="addBranch" onclick="addBranch()">Add Branch</button>
-                        <button type="button" class="btn button btn-outline-primary" id="editLabel" onclick="editLabel()">Edit Label</button>
-                        <button type="button" class="btn button btn-outline-primary" id="remove" onclick="activateRemove()">Remove</button>
+                        <button type="button" class="btn button btn-outline-primary" onclick="addNode()"><b>Add Node</b></button>
+                        <button type="button" class="btn button btn-outline-primary" id="addBranch" onclick="addBranch()"><b>Add Branch</b></button>
+                        <button type="button" class="btn button btn-outline-primary" id="editLabel" onclick="editLabel()"><b>Edit Label</b></button>
+                        <button type="button" class="btn button btn-outline-primary" id="remove" onclick="activateRemove()"><b>Remove</b></button>
                         <button type="button" class="btn btn-outline-danger" onclick="clearAll()">Clear All</button>
                     </div>
 
-                    <div class="btn-group" role="group" aria-label="Fourth group">
-                        <button type="button" class="btn button btn-outline-primary" id="start" onclick="setStart()">Set Source</button>
-                        <button type="button" class="btn button btn-outline-primary" id="end" onclick="setEnd()">Set End</button>
-                        <button type="button" class="btn btn-outline-success" onclick="solve()">Solve</button>
+                    <div>
+                        <div class="btn-group mr-2" role="group" aria-label="Third group"></div>
+                        <button type="button" class="btn btn-outline-success" id="start" onclick="setStart()"><b>Set Source</b></button>
+                        <button type="button" class="btn btn-outline-warning" id="end" onclick="setEnd()"><b>Set End</b></button>
+                        <button type="button" class="btn btn-outline-success" onclick="solve()"><b>Solve</b></button>
+                        
+                        <button type="button" class="btn button button btn-outline-primary" onclick="resizeGraph()"><b>Fit</b></button>
                     </div>
 
                 </div>
 
                 <div id="cy">
+
+                </div>
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <input type="file" class="btn button btn-outline-primary" onchange='readText(this)' />
+                        <button type="button" class="btn button btn-outline-primary" onclick="saveAsJSON('graph.json')"><b>Save as JSON</b></button>
+
+                    </div>
+
 
                 </div>
             </div>
@@ -62,23 +59,23 @@
 
         <!-- output -->
         <div class="jumbotron">
-            <h3>Output</h3>
-            <p id="result">overall gain = ? </p>
+            <i><u><h2>Output</h2></u></i>
+            <p id="result"><b style="color:red">Overall Gain = ?? </b></p>
 
             <details open>
-                <summary>Forward Paths</summary>
+                <summary ><b>Forward Paths</b></summary>
                 <p id="forwardPaths"></p>
             </details>
             <details open>
-                <summary>Individual Loops</summary>
+                <summary><b>Individual Loops</b></summary>
                 <p id="cycles"></p>
             </details>
             <details open>
-                <summary>Non Touching Loops</summary>
+                <summary><b>Non Touching Loops</b></summary>
                 <p id="nonTouchingLoops"></p>
             </details>
             <details open>
-                <summary>Deltas</summary>
+                <summary><b>Deltas</b></summary>
                 <p id="deltas"></p>
             </details>
         </div>

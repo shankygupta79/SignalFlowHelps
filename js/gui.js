@@ -24,7 +24,7 @@ function getNodeSolvingId(nodeId) {
 function showOutput(result, paths, cycles, nonTouchingLoops, delta, pathsDelta) {
     // result
     resultText = document.getElementById('result');
-    resultText.innerHTML = "overall gain = " + result;
+    resultText.innerHTML = "<b style='color: red;'> Overall GAIN =" + result+" </b>";
 
     //paths
     forwardPathsText = document.getElementById('forwardPaths');
@@ -178,7 +178,7 @@ function duplicateNodeName(name) {
 var editNodeLabelHandler = function (evt) {
     if (editLabelPressed) {
         var node = evt.target;
-        var newName = prompt("Please enter the new label", "");
+        var newName = prompt("Please Enter the new Label", "");
         if (newName == null || newName == "") {
             console.log("User cancelled the prompt.");
             setEditLabelPressed(false)
@@ -198,15 +198,15 @@ var editNodeLabelHandler = function (evt) {
 var editEdgeLabelHandler = function (evt) {
     if (editLabelPressed) {
         var edge = evt.target;
-        var newGain = prompt("Please enter the new gain", "");
+        var newGain = prompt("Please Enter the new Gain", "");
         if (newGain == null || newGain == "") {
             console.log("User cancelled the prompt.");
             setEditLabelPressed(false)
             return;
-        } else if (isNaN(newGain)) {
-            alert("Gain value must be a number");
+        }/*else if (isNaN(newGain)) {
+            alert("Gain value must be a Number");
             return;
-        } else {
+        }*/else {
             console.log(newGain);
         }
         edge.data('name', newGain);
@@ -272,7 +272,7 @@ var setStartHandler = function (evt) {
         var node = evt.target;
         if (node.data('isStart')) {
             node.data('isStart', false)
-            node.data('color', '#1970fc')
+            node.data('color', 'orange')
         } else if (node.data('isEnd')) {
             alert("start node and end node can't be the same!")
         } else {
@@ -293,7 +293,7 @@ var setEndHandler = function (evt) {
         var node = evt.target;
         if (node.data('isEnd')) {
             node.data('isEnd', false)
-            node.data('color', '#1970fc')
+            node.data('color', '#orange')
         } else if (node.data('isStart')) {
             alert("start node and end node can't be the same!")
         } else {
@@ -331,7 +331,7 @@ function addNode() {
             name: nodesIdsCount.toString(),
             isStart: false,
             isEnd: false,
-            color: "#1970fc"
+            color: "orange"
         },
         position: {
             x: x,
@@ -397,11 +397,11 @@ var addBranchHandler = function (evt) {
                 console.log("User cancelled the prompt.");
                 setaddBranchPressed(false)
                 return;
-            } else if (isNaN(gain)) {
+            } /*else if (isNaN(gain)) {
                 alert("Gain value must be a number!");
                 setaddBranchPressed(false)
                 return;
-            } else {
+            }*/ else {
                 console.log(gain)
             }
             duplicate = duplicateEdge(fromNode.id(), toNode.id(), gain);
