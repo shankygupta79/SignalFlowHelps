@@ -23,8 +23,10 @@ function getNodeSolvingId(nodeId) {
 
 function showOutput(result, paths, cycles, nonTouchingLoops, delta, pathsDelta) {
     // result
-    resultText = document.getElementById('result');
-    resultText.innerHTML = "<b style='color: red;'> Overall GAIN =" + result+" </b>";
+    var expr=result
+    let parenthesis = 'keep'
+    document.getElementById('result').innerHTML= '<b style="color:red">$$ OverallGain ='  + math.parse(expr).toTex({parenthesis: parenthesis}) + '$$ </b>'
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
 
     //paths
     forwardPathsText = document.getElementById('forwardPaths');
